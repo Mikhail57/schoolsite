@@ -9,11 +9,21 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="{{url('/style/js/materialize.min.js')}}"></script>
 </head>
-<body class="container gray-bg">
+<body>
 
+    <div class="row">
 
-    @yield('content')
+        <div class="col s2">
+            @include('left-menu')
+        </div>
 
+        <div class="col s10 gray-bg content">
+            <div class="container">
+                @yield('content')
+            </div>
+        </div>
+
+    </div>
 
     @yield('footer')
 </body>

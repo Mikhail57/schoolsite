@@ -4,14 +4,12 @@
 .white-bg{
     background-color: #FFF;
 }
-.article-block{
-    margin-bottom: 1em;
+.article{
+    margin-bottom: 2em;
 }
-.article-title{
-    padding: 0.3em;
-    margin-bottom: 0;
-    font-size: 3em !important;
+.content{
+    padding: 3em auto;
 }
-.article-body{
-    padding: 1em;
+.card-title{
+    font-size: 2.2em !important;
 }
