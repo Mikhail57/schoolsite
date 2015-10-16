@@ -1,0 +1,17 @@
+.gray-bg{
+    background-color: #e0e0e0;
+}
+.white-bg{
+    background-color: #FFF;
+}
+.article-block{
+    margin-bottom: 1em;
+}
+.article-title{
+    padding: 0.3em;
+    margin-bottom: 0;
+    font-size: 3em !important;
+}
+.article-body{
+    padding: 1em;
+}
