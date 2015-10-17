@@ -18,6 +18,13 @@ class CreateStaticPagesTable extends Migration
             $table->longText('body');
             $table->timestamps();
             $table->timestamp('published_at');
+
+            $table->boolean('deleted')->default(false);
+            $table->integer('created_by')->unsigned();
+
+            $table->foreign('created_by')
+                ->references('id')
+                ->on('users');
         });
     }
 

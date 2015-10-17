@@ -18,6 +18,14 @@ class CreateArticlesTable extends Migration
             $table->text('body');
             $table->timestamps();
             $table->timestamp('published_at');
+
+            $table->boolean('deleted')->default(false);
+            $table->integer('created_by')->unsigned();
+            $table->integer('category_id')->unsigned();
+
+            $table->foreign('created_by')
+                ->references('id')
+                ->on('users');
         });
     }
 
