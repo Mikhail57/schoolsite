@@ -16,3 +16,11 @@
 .no-margins{
     margin: 0;
 }
+.card-content-text{
+    margin-top: 1em;
+}
+.card-title{
+    line-height: 1.25em !important;
+    margin-bottom: .3em !important;
+    display: inline-block;
+}

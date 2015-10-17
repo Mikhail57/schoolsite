@@ -9,7 +9,7 @@
                     <a href="{{ action('ArticlesController@show', [$article->id]) }}">{{$article->title}}</a>
                 </span>
                 <div class="divider"></div>
-                <div class="">{!! $article->body !!}</div>
+                <div class="card-content-text">{!! $article->body !!}</div>
             </div>
         </article>
     @endforeach

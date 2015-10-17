@@ -1,3 +1,6 @@
+{{--Temporary--}}
+{!! Form::hidden('created_by', 1) !!}
+
 <div class="row">
     <div class="input-field col s12">
         {!! Form::label('title', 'Title:') !!}

@@ -4,23 +4,27 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
+    use SoftDeletes;
+
 
     protected $fillable = [
         'title',
         'body',
         'published_at',
-        'deleted'
+        'deleted',
+        'created_by' // temporary
     ];
 
-    protected $dates = ['published_at'];
-
-    public function scopePublished($query)
-    {
-        $query->where('published_at', '<=', Carbon::now())->where('deleted', '0');
-    }
+    /**
+     * This attributes should be mutated to dates
+     *
+     * @var array
+     */
+    protected $dates = ['published_at','deleted_at'];
 
     public function scopeUnpublished($query)
     {
