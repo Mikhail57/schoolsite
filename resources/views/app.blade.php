@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <div class="row">
+    <div class="row no-margins">
 
         <div class="col s2">
             @include('left-menu')

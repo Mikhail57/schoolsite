@@ -13,3 +13,6 @@
 .card-title{
     font-size: 2.2em !important;
 }
+.no-margins{
+    margin: 0;
+}
