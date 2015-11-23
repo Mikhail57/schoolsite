@@ -16,6 +16,7 @@ class User extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
+
     /**
      * The database table used by the model.
      *
@@ -37,6 +38,21 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+
+
+
+    /**
+     * Describe users types to search matches
+     *
+     * @var array
+     */
+    public $UsersTypes = [
+        0 => "Standard",
+        1 => "Editor",
+
+        10 => "Administrator",
+    ];
+
     /**
      * A user can have many articles.
      *
@@ -44,6 +60,11 @@ class User extends Model implements AuthenticatableContract,
      */
     public function articles()
     {
-        return $this->hasMany('App\Article');
+        return $this->hasMany('App\Article', 'created_by');
+    }
+
+    public function isAAdministrator()
+    {
+        return ($this->UsersTypes[$this->UserType] === "Administrator");
     }
 }

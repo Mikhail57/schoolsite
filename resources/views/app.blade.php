@@ -11,20 +11,29 @@
 </head>
 <body>
 
+
     <div class="row no-margins">
 
-        <div class="col s2">
-            @include('left-menu')
-        </div>
+        @include('header-with-left-menu')
 
-        <div class="col s10 gray-bg content">
+        <main class="col gray-bg content">
             <div class="container">
-                @yield('content')
+                <div class="row">
+                    @yield('content')
+                </div>
             </div>
-        </div>
+        </main>
 
     </div>
 
     @yield('footer')
+
+    @include('partials.flash')
+
+    <script>
+        $( document ).ready(function(){
+            $(".button-collapse").sideNav();
+        });
+    </script>
 </body>
 </html>

@@ -13,6 +13,11 @@ use App\Http\Controllers\Controller;
 class ArticlesController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'index']);
+    }
+
     /**
      *
      * Show all articles
@@ -31,13 +36,11 @@ class ArticlesController extends Controller
      *
      * Show a single article
      *
-     * @param $id
+     * @param Article $article
      * @return Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        $article = Article::findOrFail($id);
-
         $data = compact('article');
         return view('articles.show')->with($data);
     }
@@ -50,39 +53,46 @@ class ArticlesController extends Controller
      */
     public function create()
     {
+        if (\Auth::guest()){
+            return redirect('/');
+        }
         return view('articles.create');
     }
 
     /**
      *
-     * Save article into the table
+     * Save a new article into the table
      *
      * @param ArticleRequest|Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(ArticleRequest $request)
     {
-        $input = $request->all();
+        \Auth::user()->articles()->save(new Article($request->all()));
 
-        Article::create($input);
+        \Session::flash('flash_message', 'Your article has been created!');
 
         return redirect('articles');
     }
 
-    public function edit($id)
+    /**
+     *
+     * Edit existing article
+     *
+     * @param Article $article
+     * @return $this
+     */
+    public function edit(Article $article)
     {
-        $article = Article::findOrFail($id);
         $data = compact('article');
         return view('articles.edit')->with($data);
     }
 
-    public function update($id, ArticleRequest $request)
+    public function update(Article $article, ArticleRequest $request)
     {
-        $article = Article::findOrFail($id);
-
         $article->update($request->all());
 
-        return redirect('articles/'.$id);
+        return redirect('articles/'.$article->id);
     }
 
 }

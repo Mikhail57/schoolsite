@@ -24,3 +24,7 @@
     margin-bottom: .3em !important;
     display: inline-block;
 }
+
+main, footer {
+    padding-left: 240px;
+}

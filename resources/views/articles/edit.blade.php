@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Edit: {!! $article->title !!}</h1>
+    <h2>Edit: {!! $article->title !!}</h2>
 
     <hr>
 
